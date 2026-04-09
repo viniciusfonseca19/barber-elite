@@ -4,52 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1e41ed1a-a91a-4dd3-bf98-38fa2f742e50" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/barber/elite/BarberEliteApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/barber/elite/config/CustomAuthenticationProvider.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/barber/elite/config/OpenApiConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/barber/elite/config/SecurityConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/barber/elite/controller/AppointmentController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/barber/elite/controller/AuthController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/barber/elite/controller/ClientController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/barber/elite/controller/ServiceController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/barber/elite/domain/Appointment.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/barber/elite/domain/BarberService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/barber/elite/domain/Client.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/barber/elite/domain/enums/AppointmentStatus.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/barber/elite/domain/enums/Role.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/barber/elite/dto/request/AppointmentRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/barber/elite/dto/request/LoginRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/barber/elite/dto/response/AppointmentResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/barber/elite/dto/response/AuthResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/barber/elite/dto/response/ClientResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/barber/elite/dto/response/ServiceResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/barber/elite/exception/BusinessException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/barber/elite/exception/ErrorResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/barber/elite/exception/GlobalExceptionHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/barber/elite/exception/ResourceNotFoundException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/barber/elite/mapper/AppointmentMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/barber/elite/mapper/ServiceMapper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/barber/elite/repository/AppointmentRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/barber/elite/repository/BarberServiceRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/barber/elite/repository/ClientRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/barber/elite/service/AppointmentService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/barber/elite/service/BarberServiceService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/barber/elite/service/ClientService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V1__create_tables.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V2__seed_services.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/db/migration/V3__seed_admin_note.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/barber/elite/EliteApplicationTests.java" beforeDir="false" />
-    </list>
+    <list default="true" id="1e41ed1a-a91a-4dd3-bf98-38fa2f742e50" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
