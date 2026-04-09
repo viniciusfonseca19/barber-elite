@@ -1,0 +1,6 @@
+-- V3__seed_admin_note.sql
+-- Nota: A autenticacao do ADMIN e baseada em sessao Spring Security.
+-- O usuario admin e configurado via InMemoryUserDetailsManager no SecurityConfig.
+-- Senha do admin: barber-elite@vinidev  -> Role: ADMIN
+-- Qualquer outro usuario/senha          -> Role: CLIENT
+-- Nao ha tabela de usuarios; clientes sao identificados por nome+telefone.
