@@ -1,0 +1,19 @@
+version: '3.9'
+
+services:
+
+  frontend:
+    build:
+      context: ./barber-elite-frontend
+      dockerfile: Dockerfile
+    container_name: barber-elite-frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    networks:
+      - barber-net
+
+networks:
+  barber-net:
+    external: true          # reutiliza a rede criada pelo compose do backend
+    name: barber-net
