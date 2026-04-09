@@ -1,6 +1,5 @@
 package com.barber.elite.dto.response;
 
-import com.barber.elite.domain.enums.AppointmentStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,11 +11,10 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class AppointmentResponse {
+public class ClientResponse {
     private Long id;
-    private ClientResponse client;
-    private ServiceResponse service;
-    private LocalDateTime scheduledAt;
-    private AppointmentStatus status;
+    private String fullName;
+    private String phone;
+    private Boolean isBlocked;
     private LocalDateTime createdAt;
 }
