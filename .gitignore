@@ -14,11 +14,23 @@ target/
 .sts4-cache
 
 ### IntelliJ IDEA ###
-.idea
-*.iws
+target/
+*.class
+*.jar
+*.war
+.idea/
 *.iml
-*.ipr
-src/main/resources/db/application-dev.properties
+.vscode/
+.DS_Store
+
+# Profiles sensiveis - NUNCA versionar
+application-dev.properties
+application-prod.properties
+application-local.properties
+
+# Logs
+logs/
+*.log
 
 ### NetBeans ###
 /nbproject/private/
