@@ -1,0 +1,106 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(201,168,76,0.12) 0%, transparent 70%),
+    var(--dark);
+}
+
+.card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--dark-card);
+  border: 1px solid var(--dark-border);
+  border-radius: var(--radius-xl);
+  padding: 40px 36px;
+  box-shadow: var(--shadow-lg), var(--shadow-gold);
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* Brand */
+.brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.logoCircle {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(201,168,76,0.12);
+  border: 1px solid rgba(201,168,76,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.logoIcon {
+  font-size: 2rem;
+  color: var(--gold);
+}
+
+.title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* Form */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.passwordWrapper { position: relative; }
+
+.eyeBtn {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+  padding: 2px;
+  opacity: 0.6;
+  transition: opacity var(--transition);
+}
+.eyeBtn:hover { opacity: 1; }
+
+/* Hint */
+.hint {
+  text-align: center;
+  padding-top: 4px;
+  border-top: 1px solid var(--dark-border);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hint p {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+@media (max-width: 480px) {
+  .card { padding: 28px 20px; }
+}
