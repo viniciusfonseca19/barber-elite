@@ -16,7 +16,7 @@ export default function AppointmentForm({ onSuccess }) {
     phone: '',
     date: '',
     time: '',
-    serviceId: null,
+    serviceIds: [],
   })
   const [errors, setErrors] = useState({})
   const [loading, setLoading] = useState(false)
@@ -36,8 +36,8 @@ export default function AppointmentForm({ onSuccess }) {
       errs.date = 'Selecione uma data'
     if (!form.time)
       errs.time = 'Selecione um horário'
-    if (!form.serviceId)
-      errs.serviceId = 'Selecione um serviço'
+    if (!form.serviceIds || form.serviceIds.length === 0)
+      errs.serviceIds = 'Selecione um tipo de corte'
 
     if (form.date && form.time) {
       const dt = new Date(`${form.date}T${form.time}:00`)
@@ -61,10 +61,10 @@ export default function AppointmentForm({ onSuccess }) {
         fullName: form.fullName.trim(),
         phone: form.phone.replace(/\D/g, ''),
         scheduledAt,
-        serviceId: form.serviceId,
+        serviceIds: form.serviceIds,
       })
       toast.success('Agendamento realizado com sucesso!')
-      setForm({ fullName: '', phone: '', date: '', time: '', serviceId: null })
+      setForm({ fullName: '', phone: '', date: '', time: '', serviceIds: [] })
       onSuccess?.()
     } catch (err) {
       const msg = err.response?.data?.message || 'Erro ao realizar agendamento'
@@ -134,11 +134,11 @@ export default function AppointmentForm({ onSuccess }) {
       </div>
 
       <ServiceSelector
-        selectedId={form.serviceId}
-        onChange={(id) => handleChange('serviceId', id)}
+        selectedIds={form.serviceIds}
+        onChange={(ids) => handleChange('serviceIds', ids)}
       />
-      {errors.serviceId && (
-        <span className={styles.errorMsg}>{errors.serviceId}</span>
+      {errors.serviceIds && (
+        <span className={styles.errorMsg}>{errors.serviceIds}</span>
       )}
 
       <Button type="submit" loading={loading} fullWidth size="lg">

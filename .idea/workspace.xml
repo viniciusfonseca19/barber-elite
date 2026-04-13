@@ -5,15 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1e41ed1a-a91a-4dd3-bf98-38fa2f742e50" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/frontend/barber-elite/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/barber-elite/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/barber-elite/src/hooks/useAppointments.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/barber-elite/src/hooks/useServices.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/barber-elite/src/hooks/useToast.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/barber-elite/src/pages/AdminDashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/barber-elite/src/pages/AdminDashboard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/barber-elite/src/pages/ClientDashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/barber-elite/src/pages/ClientDashboard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/barber-elite/src/pages/LoginPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/barber-elite/src/pages/LoginPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/barber-elite/src/pages/NotFound.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/barber-elite/src/pages/NotFound.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/barber-elite/vite.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/barber-elite/vite.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/barber-elite/src/components/appointments/AppointmentForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/barber-elite/src/components/appointments/AppointmentForm.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/barber-elite/src/components/appointments/ServiceSelector.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/barber-elite/src/components/appointments/ServiceSelector.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/barber-elite/src/components/appointments/ServiceSelector.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/barber-elite/src/components/appointments/ServiceSelector.module.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,21 +60,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.BarberEliteApplication.executor": "Run",
-    "Maven.elite [clean,compile].executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/fonse/OneDrive/Documentos/PRINCIPAIS-PROJETOS/elite",
-    "settings.editor.selected.configurable": "reference.projectsettings.compiler.annotationProcessors"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.BarberEliteApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.elite [clean,compile].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/fonse/OneDrive/Documentos/PRINCIPAIS-PROJETOS/elite&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.annotationProcessors&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\fonse\OneDrive\Documentos\PRINCIPAIS-PROJETOS\elite" />

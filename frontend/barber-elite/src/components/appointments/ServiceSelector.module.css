@@ -1,3 +1,5 @@
+.container { display: flex; flex-direction: column; gap: 20px; }
+
 .fieldset { border: none; }
 
 .legend {
@@ -34,18 +36,30 @@
   background: var(--dark-hover);
 }
 
+.card.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 .selected {
   border-color: var(--gold);
-  background: rgba(201,168,76,0.1);
+  background: rgba(201, 168, 76, 0.1);
   box-shadow: 0 0 0 1px var(--gold);
 }
 
-.radio { display: none; }
+.radio, .checkbox { display: none; }
 
 .cardName {
   font-size: 0.9rem;
   font-weight: 600;
   color: var(--text-primary);
+}
+
+.cardPrice {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-top: 4px;
 }
 
 .cardPrice {
