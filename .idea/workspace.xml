@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1e41ed1a-a91a-4dd3-bf98-38fa2f742e50" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,8 +72,8 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\fonse\OneDrive\Documentos\PRINCIPAIS-PROJETOS\elite" />
       <recent name="C:\Users\fonse\OneDrive\Documentos\PRINCIPAIS-PROJETOS\elite\backend" />
+      <recent name="C:\Users\fonse\OneDrive\Documentos\PRINCIPAIS-PROJETOS\elite" />
       <recent name="C:\Users\fonse\OneDrive\Documentos\PRINCIPAIS-PROJETOS\elite\frontend" />
       <recent name="C:\Users\fonse\OneDrive\Documentos\PRINCIPAIS-PROJETOS\elite\src\main\resources" />
       <recent name="C:\Users\fonse\OneDrive\Documentos\PRINCIPAIS-PROJETOS\elite\src\main\resources\db\migration" />
