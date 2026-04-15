@@ -57,17 +57,29 @@ export default function AppointmentForm({ onSuccess }) {
     setLoading(true)
     try {
       const scheduledAt = `${form.date}T${form.time}:00`
-      await appointmentService.create({
+      console.log('📤 Criando agendamento com primeiro serviço (tipo de corte)')
+      
+      // Envia apenas o PRIMEIRO serviço (tipo de corte) pois o backend não permite múltiplos
+      const payload = {
         fullName: form.fullName.trim(),
         phone: form.phone.replace(/\D/g, ''),
         scheduledAt,
-        serviceIds: form.serviceIds,
-      })
+        serviceId: form.serviceIds[0],  // ← Apenas o primeiro (tipo de corte)
+      }
+      console.log('   Enviando:', payload)
+      await appointmentService.create(payload)
+      
       toast.success('Agendamento realizado com sucesso!')
       setForm({ fullName: '', phone: '', date: '', time: '', serviceIds: [] })
       onSuccess?.()
     } catch (err) {
-      const msg = err.response?.data?.message || 'Erro ao realizar agendamento'
+      console.error('❌ ERRO:', err.message)
+      console.error('Status:', err.response?.status)
+      
+      let msg = 'Erro ao realizar agendamento'
+      if (err.response?.data?.message) msg = err.response.data.message
+      else if (err.response?.data?.detail) msg = err.response.data.detail
+      
       toast.error(msg)
     } finally {
       setLoading(false)

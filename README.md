@@ -1,53 +1,463 @@
-# ✂ BarberElite
+# 💈 BarberElite - Sistema de Agendamento de Barbearia
 
-> Sistema completo de agendamentos para barbearia — desenvolvido com Spring Boot, React e MySQL.
+Uma aplicação moderna e intuitiva para gerenciar agendamentos em barbearias, com autenticação de usuários, seleção de serviços e horários disponíveis.
 
-![Java](https://img.shields.io/badge/Java-24-orange?style=flat-square&logo=openjdk)
+![Java](https://img.shields.io/badge/Java-17-orange?style=flat-square&logo=openjdk)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-4.0.4-6DB33F?style=flat-square&logo=springboot)
 ![React](https://img.shields.io/badge/React-18-61DAFB?style=flat-square&logo=react)
-![MySQL](https://img.shields.io/badge/MySQL-8.0-4479A1?style=flat-square&logo=mysql)
-![Docker](https://img.shields.io/badge/Docker-Compose-2496ED?style=flat-square&logo=docker)
+![Vite](https://img.shields.io/badge/Vite-5-646CFF?style=flat-square&logo=vite)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-17-316192?style=flat-square&logo=postgresql)
 
 ---
 
 ## 📋 Sumário
 
-- [Sobre o projeto](#-sobre-o-projeto)
+- [Visão Geral](#-visão-geral)
 - [Funcionalidades](#-funcionalidades)
-- [Tecnologias](#-tecnologias)
+- [Stack Tecnológico](#-stack-tecnológico)
 - [Arquitetura](#-arquitetura)
-- [Pré-requisitos](#-pré-requisitos)
-- [Como rodar localmente](#-como-rodar-localmente)
-- [Como rodar com Docker](#-como-rodar-com-docker)
-- [Variáveis de ambiente](#-variáveis-de-ambiente)
+- [Instalação](#-instalação)
+- [Estrutura do Banco de Dados](#-estrutura-do-banco-de-dados)
 - [Endpoints da API](#-endpoints-da-api)
-- [Regras de negócio](#-regras-de-negócio)
-- [Estrutura de pastas](#-estrutura-de-pastas)
-- [Autor](#-autor)
+- [Serviços Disponíveis](#-serviços-disponíveis)
+- [Validações](#-validações)
+- [Fluxo de Agendamento](#-fluxo-de-agendamento)
+- [Troubleshooting](#-troubleshooting)
+- [Licença](#-licença)
 
 ---
 
-## 💈 Sobre o projeto
+## 📱 Visão Geral
 
-O **BarberElite** é um sistema web de agendamentos desenvolvido para barbearias. Permite que clientes agendem horários de forma simples e intuitiva, enquanto o barbeiro (administrador) gerencia todos os agendamentos e clientes por meio de um painel exclusivo.
+**BarberElite** é uma plataforma web full-stack que permite:
 
-O sistema foi construído com foco em **boas práticas de desenvolvimento**, separação de responsabilidades, segurança via sessão HTTP e uma interface moderna com tema escuro e dourado.
+✅ **Clientes** agendem serviços de forma rápida e simples  
+✅ **Admins** gerenciem agendamentos e serviços  
+✅ Seleção de **múltiplos tipos de corte e serviços extras**  
+✅ **Validação em tempo real** de horários disponíveis  
+✅ **Autenticação segura** com sessões HTTP  
+✅ API RESTful bem estruturada  
+✅ Interface responsiva com tema dark/gold
 
 ---
 
 ## ✅ Funcionalidades
 
-### Cliente
-- Fazer login com qualquer usuário e senha
-- Visualizar serviços disponíveis com preços
-- Agendar horário informando nome, telefone, data, horário e serviço
-- Validação em tempo real dos dados do formulário
+### Para Clientes
 
-### Administrador (Barbeiro)
-- Login exclusivo com senha de administrador
-- Painel com estatísticas de agendamentos e receita prevista
-- Visualizar todos os agendamentos agrupados por data
-- Cancelar agendamentos
+- 🔐 **Login seguro** com autenticação por sessão
+- 📋 **Dashboard de agendamento** intuitivo e responsivo
+- ✂️ **Seleção de serviço** - Escolha entre Degradê ou Social
+- 💁 **Serviços extras** - Adicione Barba, Cavanhaque, Sobrancelha
+- 📅 **Data e hora** - Selecione data futura e horário disponível
+- ✔️ **Validação em tempo real** de campos obrigatórios
+- 📢 **Feedback visual** com notificações (toasts)
+
+### Para Administradores
+
+- 📊 **Dashboard com estatísticas**
+- 📅 **Gestão de agendamentos**
+- 👥 **Gerenciamento de clientes**
+- 🛠️ **Controle de serviços disponíveis**
+- ❌ **Cancelamento de agendamentos**
+
+---
+
+## 🛠️ Stack Tecnológico
+
+### Frontend
+- **React 18.3** - Biblioteca de UI
+- **Vite 5** - Build tool rápido e moderno
+- **React Router 6** - Roteamento client-side
+- **Axios** - Cliente HTTP com interceptadores
+- **CSS Modules** - Estilos isolados e componentizados
+- **ESLint** - Análise de código
+
+### Backend
+- **Spring Boot 4.0.4** - Framework web Java
+- **Java 17** - Linguagem de programação
+- **Spring Data JPA** - ORM e acesso a dados
+- **Spring Security** - Autenticação e autorização
+- **Flyway** - Versionamento de migrations
+- **PostgreSQL 17** - Banco de dados relacional
+- **Lombok** - Redução de boilerplate
+- **Springdoc OpenAPI** - Documentação automática da API
+- **Hibernate 7.2** - Mapeamento objeto-relacional
+
+---
+
+## 🏗️ Arquitetura
+
+```
+elite/
+├── frontend/barber-elite/              # React + Vite SPA
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── appointments/           # Formulário e seletor de serviços
+│   │   │   ├── common/                 # Botões, inputs, spinners
+│   │   │   └── layout/                 # Navbar, rotas privadas
+│   │   ├── pages/                      # LoginPage, Dashboards, NotFound
+│   │   ├── context/                    # Auth, Toast
+│   │   ├── hooks/                      # useAppointments, useServices, useToast
+│   │   ├── services/                   # API clients (axios)
+│   │   ├── utils/                      # Validadores, formatadores
+│   │   └── assets/                     # Imagens e estilos globais
+│   ├── package.json
+│   └── vite.config.js
+│
+└── backend/                             # Spring Boot REST API
+    ├── src/main/java/com/barber/elite/
+    │   ├── controller/                 # REST Controllers
+    │   ├── service/                    # Lógica de negócio
+    │   ├── repository/                 # JPA Repositories
+    │   ├── domain/                     # Entidades JPA
+    │   ├── dto/request                 # DTOs de entrada
+    │   ├── dto/response                # DTOs de saída
+    │   ├── config/                     # Configurações Spring
+    │   └── mapper/                     # Conversão DTO-Entity
+    ├── src/main/resources/
+    │   ├── application.properties       # Configurações
+    │   └── db/migration/               # Flyway migrations
+    └── pom.xml
+```
+
+---
+
+## 📦 Instalação
+
+### Pré-requisitos
+
+#### Backend
+- Java 17+
+- Maven 3.6+
+- PostgreSQL 12+ (ou Supabase)
+
+#### Frontend
+- Node.js 16+
+- npm ou yarn
+
+---
+
+### Backend
+
+1. **Navegue até a pasta backend:**
+```bash
+cd backend
+```
+
+2. **Configure o banco de dados** em `src/main/resources/application.properties`:
+```properties
+# Supabase ou PostgreSQL local
+spring.datasource.url=jdbc:postgresql://seu-host:5432/seu-banco
+spring.datasource.username=seu-usuario
+spring.datasource.password=sua-senha
+
+# Habilitar Flyway
+spring.flyway.enabled=true
+```
+
+3. **Execute o servidor:**
+```bash
+mvn clean spring-boot:run
+```
+
+Backend disponível em: **http://localhost:8080**  
+Documentação Swagger: **http://localhost:8080/swagger-ui.html**
+
+---
+
+### Frontend
+
+1. **Navegue até a pasta frontend:**
+```bash
+cd frontend/barber-elite
+```
+
+2. **Instale as dependências:**
+```bash
+npm install
+```
+
+3. **Inicie o servidor de desenvolvimento:**
+```bash
+npm run dev
+```
+
+Frontend disponível em: **http://localhost:5173**
+
+---
+
+## 🗄️ Estrutura do Banco de Dados
+
+### Tabela: `clients` (Clientes)
+```sql
+CREATE TABLE clients (
+    id BIGSERIAL PRIMARY KEY,
+    full_name VARCHAR(150) NOT NULL,
+    phone VARCHAR(20) NOT NULL UNIQUE,
+    is_blocked BOOLEAN DEFAULT FALSE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+### Tabela: `barber_services` (Serviços)
+```sql
+CREATE TABLE barber_services (
+    id BIGSERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL UNIQUE,
+    price DECIMAL(10,2) NOT NULL,
+    active BOOLEAN DEFAULT TRUE
+);
+```
+
+### Tabela: `appointments` (Agendamentos)
+```sql
+CREATE TABLE appointments (
+    id BIGSERIAL PRIMARY KEY,
+    client_id BIGINT NOT NULL REFERENCES clients(id),
+    service_id BIGINT NOT NULL REFERENCES barber_services(id),
+    scheduled_at TIMESTAMP NOT NULL,
+    status VARCHAR(20) DEFAULT 'SCHEDULED',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+```
+
+---
+
+## 📡 Endpoints da API
+
+### Autenticação
+```
+POST   /api/auth/login              - Fazer login
+POST   /api/auth/logout             - Fazer logout
+```
+
+### Serviços
+```
+GET    /api/services                - Listar serviços ativos
+```
+
+### Agendamentos
+```
+GET    /api/appointments            - Listar agendamentos do usuário
+GET    /api/appointments/scheduled  - Listar agendamentos futuros
+POST   /api/appointments            - Criar novo agendamento
+PATCH  /api/appointments/{id}/cancel - Cancelar agendamento
+```
+
+### Exemplo de Request
+
+```bash
+# Criar agendamento
+curl -X POST http://localhost:8080/api/appointments \
+  -H "Content-Type: application/json" \
+  -d '{
+    "fullName": "Murillo Fonseca",
+    "phone": "85987144765",
+    "scheduledAt": "2026-05-19T09:30:00",
+    "serviceId": 1
+  }'
+```
+
+---
+
+## 💈 Serviços Disponíveis
+
+| Serviço | Preço | ID |
+|---------|-------|-----|
+| Degradê | R$ 25,00 | 1 |
+| Social | R$ 15,00 | 2 |
+| Barba | R$ 15,00 | 3 |
+| Cavanhaque | R$ 5,00 | 4 |
+| Sobrancelha | R$ 5,00 | 5 |
+
+---
+
+## ✔️ Validações
+
+### Formato de Telefone
+- **Padrão:** (XX) 9XXXX-XXXX ou (XX) XXXXX-XXXX
+- **Dígitos:** 10-11 dígitos
+- **Exemplos válidos:**
+  - `(85) 98714-4765` ✅
+  - `(11) 99999-9999` ✅
+  - `85987144765` ✅
+
+### Data e Hora
+- **Tipo:** Data futura (não pode ser hoje ou passado)
+- **Dias úteis:** Segunda a Sábado (domingo fechado)
+- **Horários disponíveis:**
+  - Manhã: 09:30 - 12:00 (intervalos de 30 min)
+  - Tarde: 14:00 - 18:00 (intervalos de 30 min)
+
+### Nome Completo
+- **Mínimo:** 2 palavras (nome e sobrenome)
+- **Máximo:** 150 caracteres
+
+---
+
+## 🔄 Fluxo de Agendamento
+
+```
+1. Cliente acessa dashboard
+   ↓
+2. Seleciona tipo de corte (Degradê ou Social) ⬅️ OBRIGATÓRIO
+   ↓
+3. Seleciona serviços extras (Barba, Cavanhaque, Sobrancelha) ⬅️ OPCIONAL
+   ↓
+4. Preenche nome completo
+   ↓
+5. Preenche telefone com 11 dígitos
+   ↓
+6. Escolhe data futura
+   ↓
+7. Escolhe horário disponível
+   ↓
+8. Clica "Confirmar agendamento"
+   ↓
+9. Frontend valida TODOS os campos
+   ↓
+10. Envia o PRIMEIRO serviço (tipo de corte) para API
+    (Serviços extras são preparados para versão futura)
+   ↓
+11. Backend verifica disponibilidade do horário
+   ↓
+12. Agendamento criado com sucesso! ✅
+   ↓
+13. Toast de sucesso exibido
+   ↓
+14. Formulário limpo
+```
+
+---
+
+## 🔐 Autenticação e Segurança
+
+O sistema utiliza:
+- **Spring Security** - Autenticação e autorização
+- **Sessão HTTP** - JSESSIONID para manter usuário logado
+- **CSRF Protection** - Proteção contra ataques
+- **Roles** - CLIENT (cliente) e ADMIN (barbeiro)
+- **Validação** - Validação de dados com Jakarta Validation
+
+---
+
+## 🐛 Troubleshooting
+
+### Frontend não conecta ao backend
+
+```bash
+# Verifique se o backend está rodando
+curl http://localhost:8080/api/services
+
+# Verifique a URL da API
+# Arquivo: src/services/api.js
+# Deve estar: baseURL: '/api' (proxy) ou baseURL: 'http://localhost:8080/api'
+```
+
+### Serviços não aparecem
+
+```bash
+# Conecte ao banco de dados PostgreSQL
+psql -h seu-host -U seu-usuario -d seu-banco
+
+# Verifique se a tabela tem dados
+SELECT * FROM barber_services;
+
+# Verifique se está ativo
+SELECT * FROM barber_services WHERE active = true;
+```
+
+### Erro 422 ao agendar
+
+**Causa:** Horário já possui um agendamento  
+**Solução:** Escolha outro horário disponível
+
+### Erro 400 Bad Request
+
+**Causa:** Dados inválidos ou faltando  
+**Verificar:**
+- Telefone com 10-11 dígitos
+- Nome com 2+ palavras
+- Data futura
+- Horário dentro do expediente
+- Tipo de corte selecionado
+
+### Console mostra erros
+
+1. Abra DevTools (F12)
+2. Aba "Console"
+3. Procure por logs com `❌`
+4. Aba "Network" - verifique responses das requisições
+
+---
+
+## 📊 Migrations Flyway
+
+```
+db/migration/
+├── V1__create_tables.sql           # Criação das tabelas
+├── V2__seed_services.sql           # Inserção dos 5 serviços
+└── V3__seed_admin_note.sql         # Dados iniciais de admin
+```
+
+As migrations rodam **automaticamente** ao iniciar o servidor se `spring.flyway.enabled=true`.
+
+---
+
+## 🎨 Design System
+
+- **Tema:** Dark mode com acentuação dourada
+- **Cores:**
+  - Primária: `#C9A84C` (Gold)
+  - Background Dark: `#1a1a1a`
+  - Border: `#333333`
+  - Texto Primary: `#ffffff`
+  - Texto Secondary: `#b0b0b0`
+
+- **Tipografia:** -sans-serif
+- **Componentes:** Grid layout responsivo
+- **Ícone:** ✂️ (barbershop)
+
+---
+
+## 📱 Responsividade
+
+Totalmente responsivo para:
+- Desktop (1920px+)
+- Laptop (1366px+)
+- Tablet (768px - 1024px)
+- Mobile (320px - 767px)
+
+---
+
+## 🚀 Deployment
+
+### Backend (Render.com ou similar)
+1. Conecte repositório Git
+2. Configure variáveis de ambiente
+3. Deploy automático
+
+### Frontend (Vercel/Netlify)
+1. Build: `npm run build`
+2. Output: `dist/`
+3. Deploy da pasta `dist`
+
+---
+
+## 📄 Licença
+
+MIT License © 2026 BarberElite
+
+---
+
+## 👤 Autor
+
+Desenvolvido com ❤️ para BarberElite
+
+**Versão:** 1.0.0  
+**Última atualização:** Abril de 2026  
+**Status:** ✅ Em produção
 - Listar, bloquear e desbloquear clientes
 
 ---
