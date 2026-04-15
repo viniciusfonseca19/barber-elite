@@ -11,8 +11,15 @@ export default function ServiceSelector({ selectedIds = [], onChange }) {
 
   if (loading) return <div className={styles.loading}>Carregando serviços...</div>
 
+  console.log('Serviços recebidos da API:', services)
+  console.log('Nomes esperados para haircuts:', haircuts)
+  console.log('Nomes esperados para extras:', extras)
+
   const haircutServices = services.filter((s) => haircuts.includes(s.name))
   const extraServices = services.filter((s) => extras.includes(s.name))
+
+  console.log('Haircut services filtrados:', haircutServices)
+  console.log('Extra services filtrados:', extraServices)
 
   function handleHaircutChange(serviceId) {
     onChange([serviceId, ...selectedIds.filter((id) => !haircutServices.some((s) => s.id === id))])
