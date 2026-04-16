@@ -14,17 +14,29 @@ const api = axios.create({
   timeout: 15000,
 })
 
-// Response interceptor — trata 401 globalmente
+// Request interceptor - log de requisições
+api.interceptors.request.use(
+  (config) => {
+    console.log(`📤 [${config.method.toUpperCase()}] ${config.url}`)
+    console.log('Cookies:', document.cookie)
+    return config
+  },
+  (error) => Promise.reject(error)
+)
+
+// Response interceptor
 api.interceptors.response.use(
   (response) => response,
   (error) => {
     console.error('❌ Erro na API:', error.response?.status, error.response?.data)
     
     if (error.response?.status === 401) {
-      // Só redireciona se NÃO for uma requisição de agendamento falhando
+      console.warn('⚠️ Sessão expirada ou não autenticado')
       if (!window.location.pathname.includes('/dashboard') && 
           !error.config?.url?.includes('/appointments')) {
-        window.location.href = '/login'
+        setTimeout(() => {
+          window.location.href = '/login'
+        }, 1000)
       }
     }
     return Promise.reject(error)
