@@ -18,8 +18,12 @@ const api = axios.create({
 api.interceptors.response.use(
   (response) => response,
   (error) => {
+    console.error('❌ Erro na API:', error.response?.status, error.response?.data)
+    
     if (error.response?.status === 401) {
-      if (!window.location.pathname.includes('/login')) {
+      // Só redireciona se NÃO for uma requisição de agendamento falhando
+      if (!window.location.pathname.includes('/dashboard') && 
+          !error.config?.url?.includes('/appointments')) {
         window.location.href = '/login'
       }
     }
