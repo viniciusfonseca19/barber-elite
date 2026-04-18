@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1e41ed1a-a91a-4dd3-bf98-38fa2f742e50" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/frontend/barber-elite/src/services/appointmentService.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/barber-elite/src/services/appointmentService.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/barber-elite/nginx.conf" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/barber-elite/nginx.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/barber-elite/src/services/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/barber-elite/src/services/api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/barber-elite/src/services/authService.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/barber-elite/src/services/authService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
