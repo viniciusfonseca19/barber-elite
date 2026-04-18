@@ -36,18 +36,15 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED)
-                        .maximumSessions(1)
+                        .maximumSessions(5)
                 )
                 .authorizeHttpRequests(auth -> auth
-                        // Publicos
                         .requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/services").permitAll()
                         .requestMatchers("/swagger-ui/**", "/api/docs/**", "/swagger-ui.html").permitAll()
-                        // Apenas ADMIN
                         .requestMatchers("/api/appointments/*/cancel").hasRole("ADMIN")
                         .requestMatchers("/api/clients/*/block").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET, "/api/appointments").hasRole("ADMIN")
-                        // Qualquer autenticado
                         .anyRequest().authenticated()
                 )
                 .exceptionHandling(ex -> ex
@@ -74,24 +71,25 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        // Origens específicas (não usar * com credentials)
+
         config.setAllowedOrigins(List.of(
-            "http://localhost:5173",
-            "http://localhost:3000",
-            "http://127.0.0.1:5173",
-            "https://barber-elite-eight.vercel.app"
+                "http://localhost:5173",
+                "http://localhost:3000",
+                "http://127.0.0.1:5173",
+                "https://barber-elite-eight.vercel.app"
         ));
+
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS", "HEAD"));
         config.setAllowedHeaders(List.of(
-            "Content-Type", 
-            "Authorization", 
-            "X-Requested-With", 
-            "Accept",
-            "cache-control",
-            "pragma"
+                "Content-Type",
+                "Authorization",
+                "X-Requested-With",
+                "Accept",
+                "cache-control",
+                "pragma"
         ));
-        config.setExposedHeaders(List.of("Authorization", "Content-Type", "X-Requested-With", "Set-Cookie"));
-        config.setAllowCredentials(true);  // ← IMPORTANTÍSSIMO
+        config.setExposedHeaders(List.of("Authorization", "Content-Type", "Set-Cookie"));
+        config.setAllowCredentials(true);
         config.setMaxAge(3600L);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();

@@ -6,18 +6,14 @@ const authService = {
   async login(username, password) {
     const response = await api.post('/auth/login', { username, password })
     const { data } = response
-    
-    // Salva token em localStorage se retornar
+
     if (data.token) {
       localStorage.setItem(TOKEN_KEY, data.token)
     }
     if (data.access_token) {
       localStorage.setItem(TOKEN_KEY, data.access_token)
     }
-    if (data.sessionId) {
-      localStorage.setItem('barber_elite_sessionId', data.sessionId)
-    }
-    
+
     return data
   },
 
@@ -25,7 +21,7 @@ const authService = {
     try {
       await api.post('/auth/logout')
     } catch (err) {
-      console.warn('⚠️ Erro ao fazer logout:', err.message)
+      console.warn('Erro ao fazer logout:', err.message)
     } finally {
       localStorage.removeItem(TOKEN_KEY)
       localStorage.removeItem('barber_elite_sessionId')
