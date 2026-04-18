@@ -1,5 +1,4 @@
 import api from './api'
-import authService from './authService'
 
 const appointmentService = {
   async findAll() {
@@ -8,7 +7,12 @@ const appointmentService = {
       return data
     } catch (error) {
       if (error.response?.status === 401) {
-        console.warn('⚠️ Não autenticado ao buscar agendamentos')
+        console.warn('⚠️ 401 ao buscar agendamentos')
+        const token = localStorage.getItem('barber_elite_token')
+        const sessionId = localStorage.getItem('barber_elite_sessionId')
+        console.log('Token armazenado?', token ? 'SIM' : 'NÃO')
+        console.log('SessionId armazenado?', sessionId ? 'SIM' : 'NÃO')
+        console.log('Cookies?', document.cookie || 'NENHUM')
       }
       throw error
     }
@@ -20,7 +24,7 @@ const appointmentService = {
       return data
     } catch (error) {
       if (error.response?.status === 401) {
-        console.warn('⚠️ Não autenticado ao buscar agendamentos')
+        console.warn('⚠️ 401 ao buscar agendamentos agendados')
       }
       throw error
     }
@@ -28,17 +32,22 @@ const appointmentService = {
 
   async create(payload) {
     try {
-      console.log('📤 Criando agendamento com token:', {
-        temCookie: !!document.cookie,
-        temToken: !!localStorage.getItem('barber_elite_token'),
-      })
+      const token = localStorage.getItem('barber_elite_token')
+      const sessionId = localStorage.getItem('barber_elite_sessionId')
+      
+      console.log('📤 Criando agendamento com:')
+      console.log('  - Token?', token ? 'SIM' : 'NÃO')
+      console.log('  - SessionId?', sessionId ? `SIM: ${sessionId}` : 'NÃO')
+      console.log('  - Cookies?', document.cookie || 'NENHUM')
+      console.log('  - Payload:', payload)
+      
       const { data } = await api.post('/appointments', payload)
       return data
     } catch (error) {
       if (error.response?.status === 401) {
-        console.warn('⚠️ Erro 401 ao criar agendamento')
-        console.log('📋 Token local:', localStorage.getItem('barber_elite_token') ? 'existe' : 'não existe')
-        console.log('📋 Document.cookie:', document.cookie || 'vazio')
+        console.error('❌ 401 Unauthorized ao criar agendamento')
+        console.error('DADOS ARMAZENADOS:')
+        console.error(JSON.parse(localStorage.getItem('barber_elite_last_login') || 'null'))
       }
       throw error
     }
