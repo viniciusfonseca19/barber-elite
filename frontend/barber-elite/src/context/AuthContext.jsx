@@ -9,12 +9,32 @@ export function AuthProvider({ children }) {
 
   // Verifica sessão existente ao montar
   useEffect(() => {
-    authService.me()
-      .then((data) => {
-        if (data.authenticated) setUser(data)
-      })
-      .catch(() => {})
-      .finally(() => setLoading(false))
+    const checkAuth = async () => {
+      try {
+        const data = await authService.me()
+        if (data && data.authenticated) {
+          setUser(data)
+        }
+      } catch (err) {
+        console.warn('⚠️ Nenhuma sessão ativa ao montar')
+        // Tenta recuperar token local se existir
+        const token = localStorage.getItem('barber_elite_token')
+        if (token) {
+          console.log('💾 Encontrado token local, restaurando...')
+          try {
+            const data = await authService.me()
+            if (data) setUser(data)
+          } catch (err2) {
+            console.error('❌ Token local inválido')
+            localStorage.removeItem('barber_elite_token')
+          }
+        }
+      } finally {
+        setLoading(false)
+      }
+    }
+    
+    checkAuth()
   }, [])
 
   const login = useCallback(async (username, password) => {
@@ -24,8 +44,13 @@ export function AuthProvider({ children }) {
   }, [])
 
   const logout = useCallback(async () => {
-    await authService.logout()
-    setUser(null)
+    try {
+      await authService.logout()
+    } catch (err) {
+      console.warn('⚠️ Erro ao fazer logout:', err.message)
+    } finally {
+      setUser(null)
+    }
   }, [])
 
   const isAdmin = user?.role === 'ADMIN'

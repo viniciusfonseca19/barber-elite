@@ -75,10 +75,17 @@ export default function AppointmentForm({ onSuccess }) {
     } catch (err) {
       console.error('❌ ERRO:', err.message)
       console.error('Status:', err.response?.status)
+      console.error('Dados:', err.response?.data)
       
       let msg = 'Erro ao realizar agendamento'
-      if (err.response?.data?.message) msg = err.response.data.message
-      else if (err.response?.data?.detail) msg = err.response.data.detail
+      
+      if (err.response?.status === 401) {
+        msg = 'Sua sessão expirou. Por favor, faça login novamente.'
+      } else if (err.response?.data?.message) {
+        msg = err.response.data.message
+      } else if (err.response?.data?.detail) {
+        msg = err.response.data.detail
+      }
       
       toast.error(msg)
     } finally {
