@@ -82,7 +82,14 @@ public class SecurityConfig {
             "https://barber-elite-eight.vercel.app"
         ));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS", "HEAD"));
-        config.setAllowedHeaders(List.of("Content-Type", "Authorization", "X-Requested-With", "Accept"));
+        config.setAllowedHeaders(List.of(
+            "Content-Type", 
+            "Authorization", 
+            "X-Requested-With", 
+            "Accept",
+            "cache-control",
+            "pragma"
+        ));
         config.setExposedHeaders(List.of("Authorization", "Content-Type", "X-Requested-With", "Set-Cookie"));
         config.setAllowCredentials(true);  // ← IMPORTANTÍSSIMO
         config.setMaxAge(3600L);
